@@ -96,7 +96,7 @@ export default {
           this.error = "Usuário e/ou senha inválido(s)";
         } else {
           this.$router.push({
-            name: "log-list",
+            path: "/workspace/log-list",
             params: { currentUser: form.username }
           });
           this.showToolbar();

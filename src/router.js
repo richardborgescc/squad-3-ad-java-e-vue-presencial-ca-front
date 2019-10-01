@@ -40,84 +40,112 @@ export default new Router({
       component: ForgotPassword
     },
     {
-      name: "application-list",
-      path: "/application-list",
-      component: ApplicationList
-    },
-    {
-      name: "application-create",
-      path: "/application-create",
-      component: Application
-    },
-    {
-      name: "application-edit",
-      path: "/application-edit/:id",
-      props: true,
-      component: Application
-    },
-    {
-      name: "company-list",
-      path: "/company-list",
-      component: CompanyList
-    },
-    {
-      name: "company-create",
-      path: "/company-create",
-      component: Company
-    },
-    {
-      name: "company-edit",
-      path: "/company-edit/:id",
-      props: true,
-      component: Company
-    },
-    {
-      name: "log-list",
-      path: "/log-list",
-      component: LogList
-    },
-    {
-      name: "log-create",
-      path: "/log-create",
-      component: Log
-    },
-    {
-      name: "log-view",
-      path: "/log-view/:id",
-      props: true,
-      component: Log
-    },
-    {
-      name: "log-source-list",
-      path: "/log-source-list",
-      component: LogSourceList
-    },
-    {
-      name: "log-source-create",
-      path: "/log-source-create",
-      component: LogSource
-    },
-    {
-      name: "log-source-edit",
-      path: "/log-source-edit/:id",
-      props: true,
-      component: LogSource
-    },
-    {
-      name: "user-list",
-      path: "/user-list",
-      component: UserList
-    },
-    {
-      name: "user-create",
-      path: "/user-create",
-      component: User
-    },
-    {
-      name: "user-edit",
-      path: "/user-edit/:id",
-      props: true,
-      component: User
+      path: "/workspace/:child",
+      name: "workspace",
+      // beforeEnter: (to, from, next) => {
+      //   // ...
+      //   debugger;
+      // },
+      // redirect: to => {
+      //   // the function receives the target route as the argument
+      //   // return redirect path/location here
+      //   const state = JSON.parse(localStorage.state),
+      //     oauth = state.login.oauth;
+
+      //   debugger;
+
+      //   if (oauth.access_token && oauth.refresh_token && oauth.expires_in > 0) {
+      //     return to.path
+      //   } else {
+      //     return "/login"
+      //   }
+      // },
+      children: [
+        {
+          name: "application-list",
+          path: "application-list",
+          component: ApplicationList
+        },
+        {
+          name: "application-create",
+          path: "application-create",
+          component: Application
+        },
+        {
+          name: "application-edit",
+          path: "application-edit/:id",
+          props: true,
+          component: Application
+        },
+        {
+          name: "company-list",
+          path: "company-list",
+          component: CompanyList
+        },
+        {
+          name: "company-create",
+          path: "company-create",
+          component: Company
+        },
+        {
+          name: "company-edit",
+          path: "company-edit/:id",
+          props: true,
+          component: Company
+        },
+        {
+          name: "log-list",
+          path: "log-list",
+          component: LogList
+        },
+        {
+          name: "log-create",
+          path: "log-create",
+          component: Log
+        },
+        {
+          name: "log-view",
+          path: "log-view/:id",
+          props: true,
+          component: Log
+        },
+        {
+          name: "log-source-list",
+          path: "log-source-list",
+          component: LogSourceList
+        },
+        {
+          name: "log-source-create",
+          path: "log-source-create",
+          component: LogSource
+        },
+        {
+          name: "log-source-edit",
+          path: "log-source-edit/:id",
+          props: true,
+          component: LogSource
+        },
+        {
+          name: "user-list",
+          path: "user-list",
+          component: UserList
+        },
+        {
+          name: "user-create",
+          path: "user-create",
+          component: User
+        },
+        {
+          name: "user-edit",
+          path: "user-edit/:id",
+          props: true,
+          component: User
+        },
+        {
+          path: "**",
+          redirect: "/login"
+        }
+      ]
     },
     {
       path: "/**",
