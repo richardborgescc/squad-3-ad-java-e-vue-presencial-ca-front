@@ -8,6 +8,7 @@
       :icon="icon"
       @onInput="onInput"
       @onBlur="onBlur"
+      :onEnter="handleEnter"
     />
   </div>
 </template>
@@ -34,6 +35,13 @@ export default {
     onBlur: {
       type: Function,
       default: function() {}
+    }
+  },
+  methods: {
+    handleEnter() {
+      const me = this;
+
+      me.$emit("onEnter");
     }
   }
 };

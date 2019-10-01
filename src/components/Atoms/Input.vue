@@ -11,6 +11,7 @@
       v-model="value"
       v-on:input="handleInput"
       v-on:blur="handleBlur"
+      v-on:keyup.enter="onEnter"
     />
   </div>
 </template>
@@ -31,7 +32,11 @@ export default {
       type: String
     },
     autocomplete: String,
-    icon: String
+    icon: String,
+    onEnter: {
+      type: Function,
+      default: function() {}
+    }
   },
   data() {
     return {
@@ -42,13 +47,11 @@ export default {
     handleInput(event) {
       const me = this,
         value = event.target.value;
-
       me.$emit("onInput", value);
     },
     handleBlur(event) {
       const me = this,
         value = event.target.value;
-
       me.$emit("onBlur", value);
     }
   }

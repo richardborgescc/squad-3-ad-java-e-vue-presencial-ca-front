@@ -1,8 +1,6 @@
 <template>
-  <card-vue
-    title="Login"
-    subtitle="Insira seu usuário e senha para acessar o sistema"
-  >
+  <card-vue subtitle="Iniciar sessão">
+    <img class="logo" slot="logo" src="@/logos/djavue-login.png" alt srcset />
     <form class="form-group">
       <alert-vue v-if="error" :text="error" type="alert-danger" />
 
@@ -19,6 +17,7 @@
         type="password"
         label="Senha"
         icon="key"
+        @onEnter="submit(form)"
       />
       <div class="d-flex justify-content-around">
         <checkbox-vue
@@ -36,7 +35,7 @@
         text="Login"
         :isLoading="isLoading"
       />
-      <p style="padding-top: 15px;">
+      <p style="padding-top: 15px; margin-bottom: 0px">
         Não tem cadastro?
         <router-link :to="{ name: 'signup' }">Cadastre-se agora</router-link>
       </p>
@@ -96,7 +95,10 @@ export default {
         if (res && res.isAxiosError) {
           this.error = "Usuário e/ou senha inválido(s)";
         } else {
-          this.$router.push({ name: "log-list" });
+          this.$router.push({
+            name: "log-list",
+            params: { currentUser: form.username }
+          });
           this.showToolbar();
         }
       } catch ({ response }) {
@@ -131,6 +133,7 @@ export default {
 <style lang="css" scoped>
 form {
   padding-top: 15px;
+  margin-bottom: 0;
 }
 
 .justify-content-around {

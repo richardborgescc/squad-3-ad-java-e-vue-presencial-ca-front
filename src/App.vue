@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav-bar v-show="toolbar" class="nav-bottom-space" />
+    <nav-bar v-show="toolbar" />
     <transition name="fade">
       <router-view v-if="show"></router-view>
     </transition>
@@ -50,7 +50,12 @@ body,
   opacity: 0;
 }
 
-.nav-bottom-space {
-  margin-bottom: 20px;
+.main-section {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.menu-text {
+  margin-left: 4px;
 }
 </style>
